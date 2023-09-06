@@ -1,13 +1,20 @@
 import React from 'react'
-import MovieCard from './movieCard'
+import MovieCard from './MovieCard';
+import ReactStars from 'react-stars';
 
-const moviesList = ({movies,inputSearch , rateSearch , show , setShow}) => {
+
+
+const moviesList = ({movies,inputSearch , rateSearch , show , setShow , setRateSearch}) => {
     const styleContainer = {display :'flex' , flexWrap : 'wrap' , justifycontent : 'space-around'};
 console.log(inputSearch)
     console.log(movies)
     console.log(show);
   return (
+    <>
+    <h3 style={{color : 'white' , textAlign : 'left'}}> Filter by rate</h3>
+<ReactStars count={5} onChange={(e) => setRateSearch(e)}  value={rateSearch} size={35} half={false}/>
     <div style={styleContainer}>
+
     {
         rateSearch===0 ?
         movies
@@ -20,6 +27,7 @@ movies
 
     }
     </div>
+    </>
 
   )
 }
